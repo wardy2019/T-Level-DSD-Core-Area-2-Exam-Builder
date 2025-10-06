@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T Level DSD – Core Content Area 2 Knowledge Library (Introduction to Programming)</title>
+<meta name="description" content="Comprehensive black-and-white knowledge base for T Level Digital Software Development Core Content Area 2. Theory-first coverage for SAQ/LAQ with clear definitions, examples, pitfalls, and exam tips.">
+<style>
+  :root{--ink:#0f172a;--muted:#475569;--line:#e5e7eb;--bg:#ffffff;--code:#f8fafc}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;line-height:1.6}
+  header{background:#111827;color:#fff;padding:1.25rem 1rem}
+  header h1{margin:0;font-size:1.55rem}
+  header p{margin:.25rem 0 0}
+  main{max-width:1100px;margin:0 auto;padding:1rem}
+  nav.toc{border:1px solid var(--line);border-radius:10px;padding:1rem;background:#fff}
+  nav.toc h2{margin:.25rem 0 0;font-size:1.05rem}
+  nav.toc ul{margin:.5rem 0 0 1.2rem}
+  h2{border-bottom:2px solid var(--line);padding-bottom:.3rem;margin-top:2rem}
+  h3{margin-top:1.1rem}
+  p.desc{color:var(--muted);font-size:.96rem;margin-top:-.3rem}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:.75rem;overflow-x:auto}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .tip{border-left:4px solid #111827;background:#f3f4f6;padding:.75rem 1rem;margin:1rem 0;border-radius:6px}
+  .pitfall{border-left:4px solid #dc2626;background:#fef2f2;padding:.75rem 1rem;margin:1rem 0;border-radius:6px}
+  .grid{display:grid;gap:.75rem}
+  .two{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .three{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  table{width:100%;border-collapse:collapse;margin:.75rem 0}
+  th,td{border:1px solid var(--line);padding:.5rem;text-align:left;vertical-align:top}
+  th{background:#f9fafb}
+  .small{font-size:.95rem;color:var(--muted)}
+  .list-tight li{margin:.2rem 0}
+  footer{margin:2rem 0 1rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+  .kw{font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <h1>T Level DSD – Core Content Area 2 Knowledge Library</h1>
+  <p>Introduction to programming (Python 3.10+). <strong>Theory-first</strong> coverage for SAQs and LAQs.</p>
+</header>
+<main>
+
+<nav class="toc" aria-label="Table of contents">
+  <h2>Contents</h2>
+  <ul>
+    <li><a href="#scope">Scope & purpose</a></li>
+    <li><a href="#2-1">2.1 Standard data types</a></li>
+    <li><a href="#2-2">2.2 Variables and constants</a></li>
+    <li><a href="#2-3">2.3 Data structures</a></li>
+    <li><a href="#2-4">2.4 Operators</a></li>
+    <li><a href="#2-5">2.5 Input and output</a></li>
+    <li><a href="#2-6">2.6 Actions: sequence, selection, iteration</a></li>
+    <li><a href="#2-7">2.7 Functions and procedures</a></li>
+    <li><a href="#2-8">2.8 Validation</a></li>
+    <li><a href="#2-9">2.9 Design considerations & practices</a></li>
+    <li><a href="#2-10">2.10 Robust code & debugging</a></li>
+    <li><a href="#2-11">2.11 Common algorithms</a></li>
+    <li><a href="#2-12">2.12 Testing</a></li>
+    <li><a href="#appendix">Appendix – Glossary & quick syntax</a></li>
+  </ul>
+</nav>
+
+<section id="scope">
+  <h2>Scope & purpose</h2>
+  <p class="desc">Students analyse problems that involve software, people, processes and data, and use appropriate tools and techniques to build complete or partial solutions.</p>
+  <div class="tip">
+    <strong>Exam approach:</strong> In SAQs, be concise and specific. In LAQs, define key terms, apply to the scenario, compare alternatives, and reach a justified conclusion.
+  </div>
+</section>
+
+<section id="2-1">
+  <h2>2.1 Standard data types</h2>
+  <h3>Definition & purpose</h3>
+  <p>Data types define what kind of values can be stored and which operations are valid.</p>
+  <div class="grid two">
+    <div>
+      <table>
+        <thead><tr><th>Type</th><th>What it is</th><th>When used</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Integer (int)</strong></td><td>Whole number</td><td>Counters, IDs, indexes</td></tr>
+          <tr><td><strong>Float (float)</strong></td><td>Decimal number</td><td>Measurements, currency (use pence or rounding)</td></tr>
+          <tr><td><strong>String (str)</strong></td><td>Text</td><td>Names, messages, file paths</td></tr>
+          <tr><td><strong>Boolean (bool)</strong></td><td>True/False</td><td>Flags in selection/iteration</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+<pre><code># Typing & casting (PEP 8 style)
+age: int = 17
+price: float = 9.99
+user: str = "Amina"
+is_member: bool = True
+
+# Conversions
+units = int("12")       # -> 12
+total = float("3.50")   # -> 3.5
+flag = bool(1)          # -> True
+</code></pre>
+    </div>
+  </div>
+  <div class="pitfall"><strong>Float accuracy:</strong> Binary floating point can’t represent some decimals exactly. For money, store integer pence or round.</div>
+  <p class="small"><strong>Exam tip:</strong> When asked to <em>explain</em> a type, state the type and link it to a realistic purpose.</p>
+</section>
+
+<section id="2-2">
+  <h2>2.2 Variables and constants</h2>
+  <h3>Know & understand</h3>
+  <ul class="list-tight">
+    <li><strong>Variable:</strong> named memory that can change during execution.</li>
+    <li><strong>Constant:</strong> named value that should not change (uppercase by convention: <code>MAX_SIZE</code>).</li>
+    <li><strong>Type conversions:</strong> <code>int()</code>, <code>float()</code>, <code>str()</code>, <code>bool()</code> ensure correct types at I/O boundaries.</li>
+    <li><strong>Scope:</strong> where a name is visible (global vs local); prefer local for clarity and safety.</li>
+  </ul>
+<pre><code>VAT_RATE = 0.20  # constant by convention
+total = 0.0      # variable
+
+def add(price: float) -> None:
+    global total
+    total += price * (1 + VAT_RATE)
+</code></pre>
+  <div class="pitfall"><strong>Global misuse:</strong> Globals create hidden dependencies and hinder testing. Prefer parameters and return values.</div>
+  <p class="small"><strong>Exam tip:</strong> In an <em>evaluate</em> question, weigh flexibility (variables) vs reliability/readability (constants) and local vs global scope.</p>
+</section>
+
+<section id="2-3">
+  <h2>2.3 Data structures</h2>
+  <h3>Know & when used</h3>
+  <table>
+    <thead><tr><th>Structure</th><th>Definition</th><th>Purpose</th><th>Typical use</th></tr></thead>
+    <tbody>
+      <tr><td><strong>List</strong></td><td>Ordered, mutable collection</td><td>Dynamic sequences</td><td>Queues of tasks, sets of readings</td></tr>
+      <tr><td><strong>Array</strong></td><td>Typed, fixed-size sequence</td><td>Efficient numeric storage</td><td>Large numeric sets (Python: <code>array</code> / libraries)</td></tr>
+      <tr><td><strong>Dictionary</strong></td><td>Key–value mapping</td><td>Fast lookup by key</td><td>User ID → record; cache</td></tr>
+    </tbody>
+  </table>
+<pre><code># List & dict: interpret and develop
+scores = [12, 18, 9]
+user = {"id": 101, "name": "Amina", "active": True}
+
+scores.append(21)            # develop
+user["active"] = False       # update
+del scores[1]                # debug/change structure
+</code></pre>
+  <div class="pitfall"><strong>Mutable defaults:</strong> Avoid <code>def f(x, data=[])</code>. Use <code>None</code> then create inside function.</div>
+  <p class="small"><strong>Exam tip:</strong> In a <em>discuss</em> response, compare list vs dict in lookup speed, readability and memory use for the scenario.</p>
+</section>
+
+<section id="2-4">
+  <h2>2.4 Operators</h2>
+  <div class="grid two">
+    <div>
+      <h3>Purpose</h3>
+      <ul class="list-tight">
+        <li><strong>Arithmetic</strong>: <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>**</code> <code>//</code> <code>%</code></li>
+        <li><strong>Relational</strong>: <code>==</code> <code>!=</code> <code>&lt;</code> <code>&gt;</code> <code>&lt;=</code> <code>&gt;=</code></li>
+        <li><strong>Boolean</strong>: <code>not</code>, <code>and</code>, <code>or</code></li>
+      </ul>
+      <p class="small">Use parentheses for clarity in complex expressions.</p>
+    </div>
+    <div>
+<pre><code># Payroll example
+hours, rate = 42, 10
+overtime = (hours - 40) * rate * 1.5 if hours &gt; 40 else 0
+pay = (min(hours, 40) * rate) + overtime
+
+ok_to_pay = (pay &gt;= 400) and (hours &lt;= 60)  # relational + boolean
+</code></pre>
+    </div>
+  </div>
+  <div class="pitfall"><strong>Division:</strong> <code>/</code> returns float; <code>//</code> truncates; plan types to avoid surprises.</div>
+  <p class="small"><strong>Exam tip:</strong> In an <em>explain</em> answer, state the operator and apply it to a concrete process (discounts, thresholds).</p>
+</section>
+
+<section id="2-5">
+  <h2>2.5 Input and output</h2>
+  <h3>Keyboard & screen</h3>
+<pre><code>name = input("Enter name: ").strip()
+print(f"Hello, {name}")
+</code></pre>
+  <h3>Text files</h3>
+<pre><code># Writing text files
+with open("out.txt", "w", encoding="utf-8") as f:
+    f.write("First line\n")
+
+# Reading text files
+with open("out.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        print(line.rstrip())
+</code></pre>
+  <div class="pitfall"><strong>Forgetting to close files:</strong> Always use <code>with</code> to ensure closure; specify encoding.</div>
+  <p class="small"><strong>Exam tip:</strong> Mention error handling and encoding for robustness in longer answers.</p>
+</section>
+
+<section id="2-6">
+  <h2>2.6 Actions: sequence, selection, iteration</h2>
+  <h3>Definitions</h3>
+  <ul class="list-tight">
+    <li><strong>Sequence</strong>: steps executed in order.</li>
+    <li><strong>Selection</strong>: choose a path using <code>if/elif/else</code> or <code>match/case</code>.</li>
+    <li><strong>Iteration</strong>: repeat with <code>for</code> (count-controlled) or <code>while</code> (condition-controlled).</li>
+  </ul>
+<pre><code># Selection and iteration
+status = "due"
+match status:
+    case "paid":
+        result = "Send receipt"
+    case "due":
+        result = "Send reminder"
+    case _:
+        result = "Check status"
+
+total = 0
+for n in [3, 5, 7]:          # count-controlled example
+    total += n
+
+i = 0
+while i &lt; 5:                 # condition-controlled example
+    i += 1
+</code></pre>
+  <div class="grid two">
+    <div>
+      <h3>Benefits</h3>
+      <ul class="list-tight"><li>Reduces duplication</li><li>Enables complex logic</li><li>Improves maintainability</li></ul>
+    </div>
+    <div>
+      <h3>Drawbacks</h3>
+      <ul class="list-tight"><li>Risk of infinite loops</li><li>Deep nesting harms readability</li></ul>
+    </div>
+  </div>
+  <div class="pitfall"><strong>Off-by-one:</strong> Loop bounds are a common error; test edge values.</div>
+  <p class="small"><strong>Exam tip:</strong> In a <em>discuss</em> answer, contrast <code>for</code> (known iterations) vs <code>while</code> (unknown/condition-based).</p>
+</section>
+
+<section id="2-7">
+  <h2>2.7 Functions and procedures</h2>
+  <h3>Characteristics</h3>
+  <ul class="list-tight">
+    <li><strong>Function</strong>: may take parameters; <em>must</em> return a result.</li>
+    <li><strong>Procedure</strong>: may take parameters; <em>must not</em> return a result.</li>
+    <li>Sources: user-written, built-in, standard libraries, third-party libraries.</li>
+  </ul>
+<pre><code>def gross(total: float, rate: float) -> float:   # function
+    return total * (1 + rate)
+
+def log_event(message: str) -> None:             # procedure
+    print(f"[LOG] {message}")
+</code></pre>
+  <h3>Pre-written code: benefits & drawbacks</h3>
+  <ul class="list-tight">
+    <li><strong>Benefits:</strong> faster development, tested, community support.</li>
+    <li><strong>Drawbacks:</strong> version changes, security/licensing risks, learning curve.</li>
+  </ul>
+  <p class="small"><strong>Exam tip:</strong> For an <em>evaluate</em> question, judge reuse vs control/risks in the given context.</p>
+</section>
+
+<section id="2-8">
+  <h2>2.8 Validation</h2>
+  <h3>Checks & purpose</h3>
+  <table>
+    <thead><tr><th>Check</th><th>Purpose</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Presence</td><td>Value provided</td><td>Non-empty name</td></tr>
+      <tr><td>Length</td><td>Correct number of chars</td><td>Postcode length</td></tr>
+      <tr><td>Range</td><td>Within min/max</td><td>1 ≤ age ≤ 120</td></tr>
+      <tr><td>Type</td><td>Correct data type</td><td>int for quantity</td></tr>
+      <tr><td>Format</td><td>Matches pattern</td><td>dd/mm/yyyy date</td></tr>
+      <tr><td>Check digit</td><td>Detect common errors</td><td>ISBN, bank cards</td></tr>
+    </tbody>
+  </table>
+<pre><code># Simple looped integer input (presence + type)
+def read_int(prompt: str) -> int:
+    while True:
+        raw = input(prompt).strip()
+        if raw.isdigit():
+            return int(raw)
+        print("Enter a whole number.")
+</code></pre>
+  <div class="pitfall"><strong>Validation vs verification:</strong> Validation checks reasonableness; verification checks correctness (e.g. double entry).</div>
+  <p class="small"><strong>Exam tip:</strong> In SAQs, name a specific check and tie it to field risk (e.g. range for age).</p>
+</section>
+
+<section id="2-9">
+  <h2>2.9 Design considerations & programming practices</h2>
+  <h3>Determine order & operations</h3>
+  <ul class="list-tight">
+    <li>Define logical order of steps to avoid errors.</li>
+    <li>Use correct operator precedence or parentheses for clarity.</li>
+    <li>Choose data structures for time/memory efficiency.</li>
+    <li>Order actions to reduce repeated or unnecessary work.</li>
+  </ul>
+  <h3>Naming conventions & readability</h3>
+  <ul class="list-tight">
+    <li>Meaningful names; Python uses <code>snake_case</code> (e.g. <code>total_price</code>).</li>
+    <li>Whitespace and line length (PEP 8 suggests ≤ 79 chars).</li>
+  </ul>
+  <div class="pitfall"><strong>Premature optimisation:</strong> Don’t sacrifice clarity unless profiling shows benefit.</div>
+  <p class="small"><strong>Exam tip:</strong> For an <em>evaluate</em> response, compare maintainability vs micro-optimisations for the scenario.</p>
+</section>
+
+<section id="2-10">
+  <h2>2.10 Robust code & debugging</h2>
+  <h3>Robust code characteristics</h3>
+  <ul class="list-tight">
+    <li>Handles unexpected inputs and terminations.</li>
+    <li>Produces specific, meaningful error messages.</li>
+  </ul>
+<pre><code>def safe_divide(a: float, b: float) -> float:
+    try:
+        return a / b
+    except ZeroDivisionError:
+        print("Cannot divide by zero.")
+        return 0.0
+</code></pre>
+  <h3>Debugging process</h3>
+  <ul class="list-tight"><li>Locate errors → correct errors → re-test</li></ul>
+  <div class="pitfall"><strong>Changing too much at once:</strong> Make one fix, re-run tests, then proceed.</div>
+  <p class="small"><strong>Exam tip:</strong> In SAQs, name a technique (trace prints, breakpoints) and state why it helps.</p>
+</section>
+
+<section id="2-11">
+  <h2>2.11 Common algorithms</h2>
+  <h3>Searching algorithms</h3>
+  <table>
+    <thead><tr><th>Algorithm</th><th>How it works</th><th>When used</th><th>Benefits</th><th>Drawbacks</th></tr></thead>
+    <tbody>
+      <tr><td>Linear search</td><td>Check items one-by-one</td><td>Unsorted/small lists</td><td>Simple; no precondition</td><td>Slow for large lists</td></tr>
+      <tr><td>Binary search</td><td>Halve a <em>sorted</em> list repeatedly</td><td>Large, sorted lists</td><td>Fast (fewer checks)</td><td>Needs sorted data</td></tr>
+    </tbody>
+  </table>
+  <h3>Sorting algorithms</h3>
+  <table>
+    <thead><tr><th>Algorithm</th><th>How it works</th><th>When used</th><th>Benefits</th><th>Drawbacks</th></tr></thead>
+    <tbody>
+      <tr><td>Bubble</td><td>Swap adjacent out-of-order items</td><td>Tiny lists; teaching</td><td>Very simple</td><td>Slow on big lists</td></tr>
+      <tr><td>Insertion</td><td>Insert each item into sorted portion</td><td>Small/nearly sorted data</td><td>Efficient for nearly sorted</td><td>Worse on random large data</td></tr>
+      <tr><td>Merge</td><td>Divide & conquer; merge sorted halves</td><td>Large data, stable sort</td><td>Predictably fast</td><td>Extra memory use</td></tr>
+    </tbody>
+  </table>
+  <h3>Metrics & cases</h3>
+  <ul class="list-tight">
+    <li>Compare by: memory space, execution time, number of comparisons.</li>
+    <li>Reason about best, worst, average case (no Big O required).</li>
+  </ul>
+  <div class="pitfall"><strong>Binary search requirement:</strong> Data must be sorted first; otherwise behaviour is undefined.</div>
+  <p class="small"><strong>Exam tip:</strong> For an <em>evaluate</em> question, match algorithm to data size/order and justify trade-offs.</p>
+</section>
+
+<section id="2-12">
+  <h2>2.12 Testing</h2>
+  <h3>Testing components (why)</h3>
+  <p>Test individual parts (software, hardware, data, interfaces, service) before integration to find faults early.</p>
+  <h3>Testing methods: purpose, benefits, drawbacks, when used</h3>
+  <table>
+    <thead><tr><th>Method</th><th>Purpose/when</th><th>Benefits</th><th>Drawbacks</th></tr></thead>
+    <tbody>
+      <tr><td>Concept</td><td>Early feasibility check</td><td>Quick feedback</td><td>Not exhaustive</td></tr>
+      <tr><td>Unit</td><td>Test single module</td><td>Isolates local bugs</td><td>Misses integration issues</td></tr>
+      <tr><td>Boundary</td><td>Edge values of valid ranges</td><td>Finds off-by-one errors</td><td>Limited scope</td></tr>
+      <tr><td>Integration</td><td>Modules together</td><td>Finds interface defects</td><td>Complex setup</td></tr>
+      <tr><td>Performance</td><td>Speed/resource checks</td><td>Capacity insight</td><td>Environment-sensitive</td></tr>
+      <tr><td>System</td><td>Whole solution</td><td>End-to-end coverage</td><td>Time consuming</td></tr>
+      <tr><td>Acceptance</td><td>Meets user needs</td><td>Realistic validation</td><td>May be subjective</td></tr>
+      <tr><td>Usability</td><td>User experience</td><td>Improves UX</td><td>Qualitative data</td></tr>
+      <tr><td>Regression</td><td>After changes</td><td>Prevents reintroduced bugs</td><td>Suite grows over time</td></tr>
+      <tr><td>Load/Stress</td><td>High demand/abuse</td><td>Reliability under pressure</td><td>Risk to env.</td></tr>
+      <tr><td>Closed box</td><td>Black-box, spec-based</td><td>No code needed</td><td>Misses internal faults</td></tr>
+      <tr><td>Open box</td><td>White-box, code-aware</td><td>Path coverage</td><td>Needs code access</td></tr>
+    </tbody>
+  </table>
+  <h3>Automation</h3>
+  <p>Use macros, scripts, and functional testing tools to repeat tests efficiently.</p>
+  <h3>Test data & plan</h3>
+  <ul class="list-tight">
+    <li><strong>Data types:</strong> valid, invalid, boundary, erroneous.</li>
+    <li><strong>Plan steps:</strong> identify test → purpose → test data → expected result → record actual.</li>
+  </ul>
+<pre><code># Minimal test plan (tabular in docs)
+# Test ID | Purpose | Input | Expected | Actual | Pass/Fail
+# T-01    | Range   | age=-1| Error msg| ...    | ...</code></pre>
+  <div class="pitfall"><strong>Only testing happy paths:</strong> Include invalid and boundary cases.</div>
+  <p class="small"><strong>Exam tip:</strong> In LAQs, justify why chosen methods/data fit the scenario and risks.</p>
+</section>
+
+<section id="appendix">
+  <h2>Appendix – Glossary & quick syntax</h2>
+  <div class="grid two">
+    <div>
+      <h3>Glossary (selected)</h3>
+      <ul class="list-tight small">
+        <li><strong>Variable:</strong> changeable named value in memory.</li>
+        <li><strong>Constant:</strong> named value that should not change.</li>
+        <li><strong>Scope:</strong> where a name is visible (local/global).</li>
+        <li><strong>Validation:</strong> checks data is reasonable.</li>
+        <li><strong>Verification:</strong> checks data is correct.</li>
+        <li><strong>Algorithm:</strong> step-by-step method to solve a problem.</li>
+        <li><strong>Iteration:</strong> repetition via loops.</li>
+        <li><strong>Selection:</strong> branching via conditions.</li>
+        <li><strong>Array/List:</strong> ordered collections; arrays are typed/fixed-size.</li>
+        <li><strong>Dictionary:</strong> key–value mapping.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Quick syntax (Python 3.10+)</h3>
+<pre><code># match/case (selection)
+match status:
+    case "paid":
+        handle_paid()
+    case "due":
+        handle_due()
+    case _:
+        handle_other()
+
+# with files
+with open("file.txt","r",encoding="utf-8") as f:
+    data = f.read()
+
+# typing hints
+def add(a: int, b: int) -> int:
+    return a + b
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 T Level DSD Core Content Area 2. Black-and-white knowledge base for revision and agent use.</p>
+</footer>
+
+</main>
+</body>
+</html>

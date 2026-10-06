@@ -1,432 +1,254 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>T Level DSD – Core Content Area 2 Knowledge Library (Introduction to Programming)</title>
-<meta name="description" content="Comprehensive black-and-white knowledge base for T Level Digital Software Development Core Content Area 2. Theory-first coverage for SAQ/LAQ with clear definitions, examples, pitfalls, and exam tips.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>T Level DSD – Core Paper 1, Content Area 2: Introduction to Programming</title>
+<meta name="description" content="Specification-aligned knowledge source for Pearson T Level Digital Software Development Core Paper 1, Content Area 2: Introduction to Programming.">
 <style>
-  :root{--ink:#0f172a;--muted:#475569;--line:#e5e7eb;--bg:#ffffff;--code:#f8fafc}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;line-height:1.6}
-  header{background:#111827;color:#fff;padding:1.25rem 1rem}
-  header h1{margin:0;font-size:1.55rem}
-  header p{margin:.25rem 0 0}
-  main{max-width:1100px;margin:0 auto;padding:1rem}
-  nav.toc{border:1px solid var(--line);border-radius:10px;padding:1rem;background:#fff}
-  nav.toc h2{margin:.25rem 0 0;font-size:1.05rem}
-  nav.toc ul{margin:.5rem 0 0 1.2rem}
-  h2{border-bottom:2px solid var(--line);padding-bottom:.3rem;margin-top:2rem}
-  h3{margin-top:1.1rem}
-  p.desc{color:var(--muted);font-size:.96rem;margin-top:-.3rem}
-  pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:.75rem;overflow-x:auto}
-  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-  .tip{border-left:4px solid #111827;background:#f3f4f6;padding:.75rem 1rem;margin:1rem 0;border-radius:6px}
-  .pitfall{border-left:4px solid #dc2626;background:#fef2f2;padding:.75rem 1rem;margin:1rem 0;border-radius:6px}
-  .grid{display:grid;gap:.75rem}
-  .two{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-  .three{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-  table{width:100%;border-collapse:collapse;margin:.75rem 0}
-  th,td{border:1px solid var(--line);padding:.5rem;text-align:left;vertical-align:top}
-  th{background:#f9fafb}
-  .small{font-size:.95rem;color:var(--muted)}
-  .list-tight li{margin:.2rem 0}
-  footer{margin:2rem 0 1rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
-  .kw{font-weight:600}
+:root{--ink:#172033;--muted:#4b5563;--line:#d8dee9;--panel:#f7f8fb;--blue:#1456a0;--blue2:#eaf3ff;--green:#ecfdf3;--amber:#fff7df;--red:#fff1f2;--purple:#faf0ff;--code:#111827;--codeink:#f3f4f6;--sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{max-width:1100px;margin:0 auto;padding:1.25rem;background:#fff;color:var(--ink);font-family:var(--sans);line-height:1.6}h1{margin:0;font-size:clamp(1.8rem,4vw,2.55rem);line-height:1.15}h2{margin:2rem 0 .65rem;padding-bottom:.35rem;border-bottom:3px solid var(--blue);font-size:1.55rem}h3{margin:1.35rem 0 .4rem;font-size:1.18rem}h4{margin:1rem 0 .3rem}p,ul,ol{margin:.45rem 0}li{margin:.18rem 0}a{color:var(--blue)}table{width:100%;border-collapse:collapse;margin:.75rem 0 1rem;font-size:.95rem}th,td{border:1px solid var(--line);padding:.52rem .6rem;text-align:left;vertical-align:top}th{background:#eef2f7}tbody tr:nth-child(even){background:#fbfcfe}pre{overflow:auto;margin:.65rem 0;padding:.9rem 1rem;border:1px solid #374151;border-radius:.55rem;background:var(--code);color:var(--codeink);line-height:1.5}code{font-family:var(--mono)}:not(pre)>code{padding:.06rem .27rem;border-radius:.25rem;background:#eef2f7;color:#111827}.subtitle{color:var(--muted);font-size:1.05rem}.scope{margin:1rem 0;padding:.9rem 1rem;background:var(--blue2);border:2px solid #9dc6f2;border-radius:.65rem}.spec{display:inline-block;margin-left:.25rem;padding:.04rem .4rem;border:1px solid #a5b4fc;border-radius:.4rem;background:#eef2ff;color:#3730a3;font-size:.8rem;font-weight:700}.box{margin:.8rem 0;padding:.72rem .9rem;border-left:5px solid var(--blue);border-radius:.35rem;background:var(--panel)}.must{background:var(--green);border-left-color:#22c55e}.exam{background:var(--amber);border-left-color:#f59e0b}.pitfall{background:var(--red);border-left-color:#fb7185}.agent{background:var(--purple);border-left-color:#c084fc}.box-title{display:block;font-weight:800}.nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:.5rem;margin:1rem 0}.nav a{display:block;padding:.6rem .7rem;border:1px solid var(--line);border-radius:.45rem;background:var(--panel);text-decoration:none;font-weight:700}.small{color:var(--muted);font-size:.91rem}@media print{body{max-width:none;padding:0;font-size:10pt}.nav{display:none}.box,table,pre{break-inside:avoid}h2,h3{break-after:avoid}}
 </style>
 </head>
 <body>
 <header>
-  <h1>T Level DSD – Core Content Area 2 Knowledge Library</h1>
-  <p>Introduction to programming (Python 3.10+). <strong>Theory-first</strong> coverage for SAQs and LAQs.</p>
+<h1>T Level Digital Software Development</h1>
+<p class="subtitle"><strong>Core Paper 1 · Content Area 2: Introduction to Programming</strong></p>
+<div class="scope"><strong>Scope:</strong> This knowledge source covers specification references <strong>2.1.1–2.12.4.3</strong> only. Where “code” is used, it refers to Python 3.10 or later. Examples stay within the Core scope and Appendix 2 commands wherever possible.</div>
+<p class="small">Purpose: accurate student revision and dependable generation of AO1–AO3 exam questions. Added examples explain the specification but do not replace it.</p>
 </header>
-<main>
-
-<nav class="toc" aria-label="Table of contents">
-  <h2>Contents</h2>
-  <ul>
-    <li><a href="#scope">Scope & purpose</a></li>
-    <li><a href="#2-1">2.1 Standard data types</a></li>
-    <li><a href="#2-2">2.2 Variables and constants</a></li>
-    <li><a href="#2-3">2.3 Data structures</a></li>
-    <li><a href="#2-4">2.4 Operators</a></li>
-    <li><a href="#2-5">2.5 Input and output</a></li>
-    <li><a href="#2-6">2.6 Actions: sequence, selection, iteration</a></li>
-    <li><a href="#2-7">2.7 Functions and procedures</a></li>
-    <li><a href="#2-8">2.8 Validation</a></li>
-    <li><a href="#2-9">2.9 Design considerations & practices</a></li>
-    <li><a href="#2-10">2.10 Robust code & debugging</a></li>
-    <li><a href="#2-11">2.11 Common algorithms</a></li>
-    <li><a href="#2-12">2.12 Testing</a></li>
-    <li><a href="#appendix">Appendix – Glossary & quick syntax</a></li>
-  </ul>
+<nav class="nav" aria-label="Contents">
+<a href="#2-1">2.1 Data types</a><a href="#2-2">2.2 Variables/constants</a><a href="#2-3">2.3 Data structures</a><a href="#2-4">2.4 Operators</a><a href="#2-5">2.5 Input/output</a><a href="#2-6">2.6 Actions</a><a href="#2-7">2.7 Functions/procedures</a><a href="#2-8">2.8 Validation</a><a href="#2-9">2.9 Design practices</a><a href="#2-10">2.10 Robust code</a><a href="#2-11">2.11 Algorithms</a><a href="#2-12">2.12 Testing</a><a href="#agent">Agent guidance</a><a href="#glossary">Glossary</a>
 </nav>
 
-<section id="scope">
-  <h2>Scope & purpose</h2>
-  <p class="desc">Students analyse problems that involve software, people, processes and data, and use appropriate tools and techniques to build complete or partial solutions.</p>
-  <div class="tip">
-    <strong>Exam approach:</strong> In SAQs, be concise and specific. In LAQs, define key terms, apply to the scenario, compare alternatives, and reach a justified conclusion.
-  </div>
+<section id="2-1"><h2>2.1 Standard Data Types</h2>
+<h3>Definitions, purpose and use <span class="spec">2.1.1</span></h3>
+<table><thead><tr><th>Type</th><th>Definition</th><th>Purpose and suitable use</th><th>Examples</th></tr></thead><tbody>
+<tr><td>Integer</td><td>A whole number without a decimal part.</td><td>Counting, positions, quantities and other whole-number values.</td><td><code>17</code>, <code>-4</code>, <code>0</code></td></tr>
+<tr><td>Float</td><td>A number that can contain a fractional/decimal part.</td><td>Measurements, averages and values requiring decimal places.</td><td><code>3.5</code>, <code>-0.25</code></td></tr>
+<tr><td>String</td><td>A sequence of characters treated as text.</td><td>Names, messages, codes and other values not used as arithmetic numbers.</td><td><code>"Amina"</code>, <code>"SY1 1AA"</code></td></tr>
+<tr><td>Boolean</td><td>A value that is either <code>True</code> or <code>False</code>.</td><td>Representing conditions, states and flags used in decisions or loops.</td><td><code>is_member = True</code></td></tr>
+</tbody></table>
+<pre><code>age = 17
+average_score = 72.5
+student_name = "Amina"
+is_complete = False</code></pre>
+<div class="box pitfall"><span class="box-title">Common misconception</span>A value containing digits is not automatically numeric. A telephone number or product code may be stored as a string because arithmetic is not performed on it.</div>
 </section>
 
-<section id="2-1">
-  <h2>2.1 Standard data types</h2>
-  <h3>Definition & purpose</h3>
-  <p>Data types define what kind of values can be stored and which operations are valid.</p>
-  <div class="grid two">
-    <div>
-      <table>
-        <thead><tr><th>Type</th><th>What it is</th><th>When used</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Integer (int)</strong></td><td>Whole number</td><td>Counters, IDs, indexes</td></tr>
-          <tr><td><strong>Float (float)</strong></td><td>Decimal number</td><td>Measurements, currency (use pence or rounding)</td></tr>
-          <tr><td><strong>String (str)</strong></td><td>Text</td><td>Names, messages, file paths</td></tr>
-          <tr><td><strong>Boolean (bool)</strong></td><td>True/False</td><td>Flags in selection/iteration</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-<pre><code># Typing & casting (PEP 8 style)
-age: int = 17
-price: float = 9.99
-user: str = "Amina"
-is_member: bool = True
+<section id="2-2"><h2>2.2 Variables and Constants</h2>
+<h3>Variables and constants <span class="spec">2.2.1–2.2.2</span></h3>
+<ul><li><strong>Variable:</strong> a named storage location whose value can change while a program runs.</li><li><strong>Constant:</strong> a named value intended not to change while the relevant program runs. Python uses a naming convention such as <code>MAX_ATTEMPTS</code> to communicate this intention.</li></ul>
+<pre><code>MAX_ATTEMPTS = 3
+attempts = 0
+attempts = attempts + 1</code></pre>
+<h3>Data type conversion <span class="spec">2.2.3, 2.2.9</span></h3>
+<p>Conversion functions change a value into a required data type. Keyboard input is returned as a string, so conversion is often needed before calculations.</p>
+<pre><code>age = int(input("Enter age: "))
+price = float(input("Enter price: "))
+message = str(25)
+is_active = bool(1)</code></pre>
+<h3>Scope <span class="spec">2.2.4–2.2.6</span></h3>
+<table><thead><tr><th>Scope</th><th>Meaning</th><th>Use and consideration</th></tr></thead><tbody><tr><td>Global</td><td>Available across the program after it has been created.</td><td>May be needed by several parts, but widespread use can make changes and testing harder to control.</td></tr><tr><td>Local</td><td>Created within a function/procedure and available there.</td><td>Limits unintended changes and makes the part easier to understand and test.</td></tr></tbody></table>
+<pre><code>discount_rate = 0.10
 
-# Conversions
-units = int("12")       # -> 12
-total = float("3.50")   # -> 3.5
-flag = bool(1)          # -> True
-</code></pre>
-    </div>
-  </div>
-  <div class="pitfall"><strong>Float accuracy:</strong> Binary floating point can’t represent some decimals exactly. For money, store integer pence or round.</div>
-  <p class="small"><strong>Exam tip:</strong> When asked to <em>explain</em> a type, state the type and link it to a realistic purpose.</p>
+def calculate_discount(price):
+    discount = price * discount_rate
+    return discount</code></pre>
+<h3>Declare and use variables/constants <span class="spec">2.2.7–2.2.8</span></h3>
+<p>Select a suitable data type, meaningful name and initial value. Use a variable where the value changes and a constant where it should remain stable.</p>
 </section>
 
-<section id="2-2">
-  <h2>2.2 Variables and constants</h2>
-  <h3>Know & understand</h3>
-  <ul class="list-tight">
-    <li><strong>Variable:</strong> named memory that can change during execution.</li>
-    <li><strong>Constant:</strong> named value that should not change (uppercase by convention: <code>MAX_SIZE</code>).</li>
-    <li><strong>Type conversions:</strong> <code>int()</code>, <code>float()</code>, <code>str()</code>, <code>bool()</code> ensure correct types at I/O boundaries.</li>
-    <li><strong>Scope:</strong> where a name is visible (global vs local); prefer local for clarity and safety.</li>
-  </ul>
-<pre><code>VAT_RATE = 0.20  # constant by convention
-total = 0.0      # variable
+<section id="2-3"><h2>2.3 Data Structures</h2>
+<h3>Purpose and use <span class="spec">2.3.1</span></h3>
+<table><thead><tr><th>Structure</th><th>Definition</th><th>Suitable use</th></tr></thead><tbody>
+<tr><td>List</td><td>An ordered collection of values accessed by position/index.</td><td>A sequence whose items need to be stored, processed or changed.</td></tr>
+<tr><td>Array</td><td>An indexed collection used to store a set of related values.</td><td>Related values requiring consistent indexed access. The exact implementation depends on the language/library.</td></tr>
+<tr><td>Dictionary</td><td>A collection of key–value pairs.</td><td>Looking up a value using a meaningful key rather than only a numerical position.</td></tr>
+</tbody></table>
+<h3>Interpret, develop and debug <span class="spec">2.3.2–2.3.4</span></h3>
+<pre><code>scores = [12, 18, 9]
+student = {"id": 101, "name": "Amina"}
 
-def add(price: float) -> None:
-    global total
-    total += price * (1 + VAT_RATE)
-</code></pre>
-  <div class="pitfall"><strong>Global misuse:</strong> Globals create hidden dependencies and hinder testing. Prefer parameters and return values.</div>
-  <p class="small"><strong>Exam tip:</strong> In an <em>evaluate</em> question, weigh flexibility (variables) vs reliability/readability (constants) and local vs global scope.</p>
+scores.append(21)
+student["name"] = "Amira"
+
+print(scores[0])
+print(student["name"])</code></pre>
+<div class="box pitfall"><span class="box-title">Common errors</span>Using an index outside the available positions, misspelling a dictionary key, or selecting a structure that does not suit the required access.</div>
 </section>
 
-<section id="2-3">
-  <h2>2.3 Data structures</h2>
-  <h3>Know & when used</h3>
-  <table>
-    <thead><tr><th>Structure</th><th>Definition</th><th>Purpose</th><th>Typical use</th></tr></thead>
-    <tbody>
-      <tr><td><strong>List</strong></td><td>Ordered, mutable collection</td><td>Dynamic sequences</td><td>Queues of tasks, sets of readings</td></tr>
-      <tr><td><strong>Array</strong></td><td>Typed, fixed-size sequence</td><td>Efficient numeric storage</td><td>Large numeric sets (Python: <code>array</code> / libraries)</td></tr>
-      <tr><td><strong>Dictionary</strong></td><td>Key–value mapping</td><td>Fast lookup by key</td><td>User ID → record; cache</td></tr>
-    </tbody>
-  </table>
-<pre><code># List & dict: interpret and develop
-scores = [12, 18, 9]
-user = {"id": 101, "name": "Amina", "active": True}
+<section id="2-4"><h2>2.4 Operators</h2>
+<h3>Purpose <span class="spec">2.4.1–2.4.3</span></h3>
+<table><thead><tr><th>Group</th><th>Operators</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>Arithmetic</td><td><code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>**</code> <code>//</code> <code>%</code></td><td>Add, subtract, multiply, divide, exponentiate, perform integer division and find a remainder.</td></tr>
+<tr><td>Relational</td><td><code>==</code> <code>&lt;</code> <code>&gt;</code> <code>!=</code> <code>&lt;=</code> <code>&gt;=</code></td><td>Compare values and produce a Boolean result.</td></tr>
+<tr><td>Boolean</td><td><code>not</code> <code>and</code> <code>or</code></td><td>Reverse or combine Boolean conditions.</td></tr>
+</tbody></table>
+<h3>Use, interpret, create and debug <span class="spec">2.4.4–2.4.7</span></h3>
+<pre><code>total = quantity * price
+remainder = total_items % group_size
+eligible = age >= 18 and has_id == True
 
-scores.append(21)            # develop
-user["active"] = False       # update
-del scores[1]                # debug/change structure
-</code></pre>
-  <div class="pitfall"><strong>Mutable defaults:</strong> Avoid <code>def f(x, data=[])</code>. Use <code>None</code> then create inside function.</div>
-  <p class="small"><strong>Exam tip:</strong> In a <em>discuss</em> response, compare list vs dict in lookup speed, readability and memory use for the scenario.</p>
+if score < 0 or score > 100:
+    print("Invalid score")</code></pre>
+<div class="box pitfall"><span class="box-title">Common errors</span>Using <code>=</code> instead of <code>==</code> for equivalence, applying incorrect precedence, or using <code>and</code> where <code>or</code> is required.</div>
 </section>
 
-<section id="2-4">
-  <h2>2.4 Operators</h2>
-  <div class="grid two">
-    <div>
-      <h3>Purpose</h3>
-      <ul class="list-tight">
-        <li><strong>Arithmetic</strong>: <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>**</code> <code>//</code> <code>%</code></li>
-        <li><strong>Relational</strong>: <code>==</code> <code>!=</code> <code>&lt;</code> <code>&gt;</code> <code>&lt;=</code> <code>&gt;=</code></li>
-        <li><strong>Boolean</strong>: <code>not</code>, <code>and</code>, <code>or</code></li>
-      </ul>
-      <p class="small">Use parentheses for clarity in complex expressions.</p>
-    </div>
-    <div>
-<pre><code># Payroll example
-hours, rate = 42, 10
-overtime = (hours - 40) * rate * 1.5 if hours &gt; 40 else 0
-pay = (min(hours, 40) * rate) + overtime
+<section id="2-5"><h2>2.5 Input and Output</h2>
+<h3>Keyboard, screen and text file <span class="spec">2.5.1</span></h3>
+<pre><code>name = input("Enter name: ")
+print("Hello", name)</code></pre>
+<h3>Text files <span class="spec">2.5.2</span></h3>
+<p>Students need to understand opening a file for reading or writing, writing lines and closing the file.</p>
+<pre><code>output_file = open("results.txt", "w")
+output_file.write("Amina,18
+")
+output_file.close()
 
-ok_to_pay = (pay &gt;= 400) and (hours &lt;= 60)  # relational + boolean
-</code></pre>
-    </div>
-  </div>
-  <div class="pitfall"><strong>Division:</strong> <code>/</code> returns float; <code>//</code> truncates; plan types to avoid surprises.</div>
-  <p class="small"><strong>Exam tip:</strong> In an <em>explain</em> answer, state the operator and apply it to a concrete process (discounts, thresholds).</p>
+input_file = open("results.txt", "r")
+line = input_file.readline()
+input_file.close()
+print(line.strip())</code></pre>
+<h3>Interpret, create and debug <span class="spec">2.5.3–2.5.5</span></h3>
+<p>Check file mode, filename, conversion of input, use of newline characters and whether a file is closed after use.</p>
 </section>
 
-<section id="2-5">
-  <h2>2.5 Input and output</h2>
-  <h3>Keyboard & screen</h3>
-<pre><code>name = input("Enter name: ").strip()
-print(f"Hello, {name}")
-</code></pre>
-  <h3>Text files</h3>
-<pre><code># Writing text files
-with open("out.txt", "w", encoding="utf-8") as f:
-    f.write("First line\n")
+<section id="2-6"><h2>2.6 Actions</h2>
+<h3>Sequence <span class="spec">2.6.1</span></h3><p>Instructions are executed in a logical order. Incorrect order may produce inaccurate output or an error.</p>
+<h3>Selection <span class="spec">2.6.2</span></h3><p>Selection chooses which instructions run using <code>if</code>, <code>elif</code>, <code>else</code> or <code>match/case</code>.</p>
+<pre><code>if score >= 70:
+    grade = "Distinction"
+elif score >= 50:
+    grade = "Pass"
+else:
+    grade = "Not achieved"</code></pre>
+<h3>Loops and iteration <span class="spec">2.6.3–2.6.4</span></h3>
+<table><thead><tr><th>Loop</th><th>Use</th></tr></thead><tbody><tr><td>Count-controlled <code>for</code></td><td>Used when iterating over a known range or collection.</td></tr><tr><td>Condition-controlled <code>while</code></td><td>Used while a condition remains true, often when the number of repetitions is not known beforehand.</td></tr></tbody></table>
+<pre><code>for number in range(5):
+    print(number)
 
-# Reading text files
-with open("out.txt", "r", encoding="utf-8") as f:
-    for line in f:
-        print(line.rstrip())
-</code></pre>
-  <div class="pitfall"><strong>Forgetting to close files:</strong> Always use <code>with</code> to ensure closure; specify encoding.</div>
-  <p class="small"><strong>Exam tip:</strong> Mention error handling and encoding for robustness in longer answers.</p>
+password = ""
+while password != "secure123":
+    password = input("Password: ")</code></pre>
+<h3>Benefits and drawbacks of loops <span class="spec">2.6.5</span></h3>
+<table><thead><tr><th>Benefits</th><th>Drawbacks</th></tr></thead><tbody><tr><td>Reduce repeated code; process collections; automate repetition.</td><td>Incorrect conditions can create infinite loops; incorrect bounds can miss or repeat values; excessive repetition can reduce efficiency.</td></tr></tbody></table>
+<h3>Interpret, develop and debug actions <span class="spec">2.6.6–2.6.8</span></h3><p>Trace the order, decisions and repetitions. Check conditions, updates, indentation and termination.</p>
 </section>
 
-<section id="2-6">
-  <h2>2.6 Actions: sequence, selection, iteration</h2>
-  <h3>Definitions</h3>
-  <ul class="list-tight">
-    <li><strong>Sequence</strong>: steps executed in order.</li>
-    <li><strong>Selection</strong>: choose a path using <code>if/elif/else</code> or <code>match/case</code>.</li>
-    <li><strong>Iteration</strong>: repeat with <code>for</code> (count-controlled) or <code>while</code> (condition-controlled).</li>
-  </ul>
-<pre><code># Selection and iteration
-status = "due"
-match status:
-    case "paid":
-        result = "Send receipt"
-    case "due":
-        result = "Send reminder"
-    case _:
-        result = "Check status"
+<section id="2-7"><h2>2.7 Functions and Procedures</h2>
+<h3>Characteristics <span class="spec">2.7.1–2.7.2</span></h3>
+<table><thead><tr><th>Construct</th><th>Parameters</th><th>Return</th></tr></thead><tbody><tr><td>Function</td><td>May or may not take parameters.</td><td>Must return a result.</td></tr><tr><td>Procedure</td><td>May or may not take parameters.</td><td>Must not return a result.</td></tr></tbody></table>
+<pre><code>def calculate_total(price, quantity):
+    return price * quantity
 
-total = 0
-for n in [3, 5, 7]:          # count-controlled example
-    total += n
-
-i = 0
-while i &lt; 5:                 # condition-controlled example
-    i += 1
-</code></pre>
-  <div class="grid two">
-    <div>
-      <h3>Benefits</h3>
-      <ul class="list-tight"><li>Reduces duplication</li><li>Enables complex logic</li><li>Improves maintainability</li></ul>
-    </div>
-    <div>
-      <h3>Drawbacks</h3>
-      <ul class="list-tight"><li>Risk of infinite loops</li><li>Deep nesting harms readability</li></ul>
-    </div>
-  </div>
-  <div class="pitfall"><strong>Off-by-one:</strong> Loop bounds are a common error; test edge values.</div>
-  <p class="small"><strong>Exam tip:</strong> In a <em>discuss</em> answer, contrast <code>for</code> (known iterations) vs <code>while</code> (unknown/condition-based).</p>
+def display_message(message):
+    print(message)</code></pre>
+<h3>Sources of code <span class="spec">2.7.3</span></h3>
+<ul><li>User-written.</li><li>Pre-written and built into the language.</li><li>Pre-written in libraries supplied with the language.</li><li>Pre-written in third-party libraries.</li></ul>
+<h3>Pre-written code: benefits and drawbacks <span class="spec">2.7.4</span></h3>
+<table><thead><tr><th>Benefits</th><th>Drawbacks</th></tr></thead><tbody><tr><td>Can reduce development time; avoids recreating existing functionality; may have been widely used/tested.</td><td>May not meet exact requirements; creates dependency on external code; may contain defects or security issues; developer must understand correct use.</td></tr></tbody></table>
+<h3>Interpret, develop and debug <span class="spec">2.7.5–2.7.7</span></h3><p>Check parameters, arguments, returned values, function calls and whether a function/procedure matches the required purpose.</p>
 </section>
 
-<section id="2-7">
-  <h2>2.7 Functions and procedures</h2>
-  <h3>Characteristics</h3>
-  <ul class="list-tight">
-    <li><strong>Function</strong>: may take parameters; <em>must</em> return a result.</li>
-    <li><strong>Procedure</strong>: may take parameters; <em>must not</em> return a result.</li>
-    <li>Sources: user-written, built-in, standard libraries, third-party libraries.</li>
-  </ul>
-<pre><code>def gross(total: float, rate: float) -> float:   # function
-    return total * (1 + rate)
-
-def log_event(message: str) -> None:             # procedure
-    print(f"[LOG] {message}")
-</code></pre>
-  <h3>Pre-written code: benefits & drawbacks</h3>
-  <ul class="list-tight">
-    <li><strong>Benefits:</strong> faster development, tested, community support.</li>
-    <li><strong>Drawbacks:</strong> version changes, security/licensing risks, learning curve.</li>
-  </ul>
-  <p class="small"><strong>Exam tip:</strong> For an <em>evaluate</em> question, judge reuse vs control/risks in the given context.</p>
+<section id="2-8"><h2>2.8 Validation</h2>
+<h3>Definition, purpose and checks <span class="spec">2.8.1</span></h3>
+<p><strong>Validation</strong> checks whether input follows defined rules and is acceptable for processing. It does not prove that the value is factually correct.</p>
+<table><thead><tr><th>Check</th><th>Purpose</th><th>Example</th></tr></thead><tbody>
+<tr><td>Presence</td><td>Ensures data has been entered.</td><td>Name must not be blank.</td></tr><tr><td>Length</td><td>Checks the number of characters.</td><td>Password must contain at least 8 characters.</td></tr><tr><td>Range</td><td>Checks a value is between allowed limits.</td><td>Score must be 0–100 inclusive.</td></tr><tr><td>Type</td><td>Checks data is of the required type.</td><td>Quantity must be an integer.</td></tr><tr><td>Format</td><td>Checks data follows a required pattern.</td><td>Reference begins with two letters.</td></tr><tr><td>Check digit</td><td>Uses a calculated digit to detect certain input errors.</td><td>Product or identification code.</td></tr>
+</tbody></table>
+<h3>Interpret, develop and debug <span class="spec">2.8.2–2.8.4</span></h3>
+<pre><code>score = int(input("Enter score: "))
+while score < 0 or score > 100:
+    print("Score must be from 0 to 100")
+    score = int(input("Enter score: "))</code></pre>
+<div class="box pitfall"><span class="box-title">Validation is not verification</span>Validation checks compliance with rules. A plausible but incorrect value may pass validation.</div>
 </section>
 
-<section id="2-8">
-  <h2>2.8 Validation</h2>
-  <h3>Checks & purpose</h3>
-  <table>
-    <thead><tr><th>Check</th><th>Purpose</th><th>Example</th></tr></thead>
-    <tbody>
-      <tr><td>Presence</td><td>Value provided</td><td>Non-empty name</td></tr>
-      <tr><td>Length</td><td>Correct number of chars</td><td>Postcode length</td></tr>
-      <tr><td>Range</td><td>Within min/max</td><td>1 ≤ age ≤ 120</td></tr>
-      <tr><td>Type</td><td>Correct data type</td><td>int for quantity</td></tr>
-      <tr><td>Format</td><td>Matches pattern</td><td>dd/mm/yyyy date</td></tr>
-      <tr><td>Check digit</td><td>Detect common errors</td><td>ISBN, bank cards</td></tr>
-    </tbody>
-  </table>
-<pre><code># Simple looped integer input (presence + type)
-def read_int(prompt: str) -> int:
-    while True:
-        raw = input(prompt).strip()
-        if raw.isdigit():
-            return int(raw)
-        print("Enter a whole number.")
-</code></pre>
-  <div class="pitfall"><strong>Validation vs verification:</strong> Validation checks reasonableness; verification checks correctness (e.g. double entry).</div>
-  <p class="small"><strong>Exam tip:</strong> In SAQs, name a specific check and tie it to field risk (e.g. range for age).</p>
+<section id="2-9"><h2>2.9 Design Considerations and Programming Practices</h2>
+<h3>Logical order and order of operations <span class="spec">2.9.1–2.9.2</span></h3><p>Actions and calculations must be ordered so outputs are accurate and errors are avoided. Parentheses can make intended calculation order clear.</p>
+<h3>Efficiency choices <span class="spec">2.9.3–2.9.4</span></h3><p>Select data structures and order actions with execution time and memory use in mind. Avoid unnecessary processing or storage while still meeting requirements.</p>
+<h3>Naming and readability <span class="spec">2.9.5–2.9.6</span></h3>
+<ul><li>Use meaningful names.</li><li>Recognise and use <code>camelCase</code> and <code>snake_case</code>.</li><li>Use whitespace consistently.</li><li>Avoid line lengths that make code difficult to read or display.</li></ul>
+<pre><code># Unclear
+x = p * q
+
+# Clearer
+total_price = unit_price * quantity</code></pre>
+<h3>Judge algorithm suitability <span class="spec">2.9.7</span></h3>
+<div class="box must"><span class="box-title">Required judgement factors</span>
+<ul><li>meeting requirements;</li><li>storage efficiency;</li><li>execution time;</li><li>choice of data structures and data types;</li><li>use of variables and constants;</li><li>presentation;</li><li>maintainability.</li></ul></div>
+<p>A justified judgement applies these factors to the scenario, considers strengths or limitations and concludes whether the algorithm is suitable.</p>
 </section>
 
-<section id="2-9">
-  <h2>2.9 Design considerations & programming practices</h2>
-  <h3>Determine order & operations</h3>
-  <ul class="list-tight">
-    <li>Define logical order of steps to avoid errors.</li>
-    <li>Use correct operator precedence or parentheses for clarity.</li>
-    <li>Choose data structures for time/memory efficiency.</li>
-    <li>Order actions to reduce repeated or unnecessary work.</li>
-  </ul>
-  <h3>Naming conventions & readability</h3>
-  <ul class="list-tight">
-    <li>Meaningful names; Python uses <code>snake_case</code> (e.g. <code>total_price</code>).</li>
-    <li>Whitespace and line length (PEP 8 suggests ≤ 79 chars).</li>
-  </ul>
-  <div class="pitfall"><strong>Premature optimisation:</strong> Don’t sacrifice clarity unless profiling shows benefit.</div>
-  <p class="small"><strong>Exam tip:</strong> For an <em>evaluate</em> response, compare maintainability vs micro-optimisations for the scenario.</p>
+<section id="2-10"><h2>2.10 Robust Code</h2>
+<h3>Characteristics <span class="spec">2.10.1</span></h3>
+<ul><li>Handles unexpected inputs.</li><li>Handles unexpected terminations.</li><li>Produces specific and meaningful error messages.</li></ul>
+<pre><code>quantity = input("Enter quantity: ")
+
+if quantity.isdigit():
+    quantity = int(quantity)
+    print("Quantity accepted")
+else:
+    print("Quantity must be a whole number")</code></pre>
+<h3>Debugging <span class="spec">2.10.2–2.10.5</span></h3>
+<p>Debugging is used to locate and correct errors. It supports robust solutions by removing faults that cause incorrect output, failure or unsuitable handling of data.</p>
+<ol><li>Identify the expected behaviour.</li><li>Locate the error.</li><li>Correct the error.</li><li>Run the relevant code again to check the correction.</li></ol>
+<div class="box pitfall"><span class="box-title">Common weakness</span>Changing several unrelated parts at once can make it harder to determine which correction solved the problem or introduced another fault.</div>
 </section>
 
-<section id="2-10">
-  <h2>2.10 Robust code & debugging</h2>
-  <h3>Robust code characteristics</h3>
-  <ul class="list-tight">
-    <li>Handles unexpected inputs and terminations.</li>
-    <li>Produces specific, meaningful error messages.</li>
-  </ul>
-<pre><code>def safe_divide(a: float, b: float) -> float:
-    try:
-        return a / b
-    except ZeroDivisionError:
-        print("Cannot divide by zero.")
-        return 0.0
-</code></pre>
-  <h3>Debugging process</h3>
-  <ul class="list-tight"><li>Locate errors → correct errors → re-test</li></ul>
-  <div class="pitfall"><strong>Changing too much at once:</strong> Make one fix, re-run tests, then proceed.</div>
-  <p class="small"><strong>Exam tip:</strong> In SAQs, name a technique (trace prints, breakpoints) and state why it helps.</p>
+<section id="2-11"><h2>2.11 Common Algorithms</h2>
+<h3>Searching <span class="spec">2.11.1, 2.11.3, 2.11.6</span></h3>
+<table><thead><tr><th>Algorithm</th><th>How it works</th><th>Benefits</th><th>Drawbacks/suitability</th></tr></thead><tbody>
+<tr><td>Linear search</td><td>Checks each item in order until the target is found or all items have been checked.</td><td>Simple; works with unsorted data.</td><td>May require many comparisons; suitable for small or unsorted collections.</td></tr>
+<tr><td>Binary search</td><td>Compares the target with the middle item in sorted data and repeatedly discards half of the remaining search area.</td><td>Can use far fewer comparisons on large sorted data.</td><td>Requires sorted data; sorting first may add work if searches are infrequent.</td></tr>
+</tbody></table>
+<h3>Sorting <span class="spec">2.11.2–2.11.3, 2.11.7</span></h3>
+<table><thead><tr><th>Algorithm</th><th>How it works</th><th>Benefits</th><th>Drawbacks/suitability</th></tr></thead><tbody>
+<tr><td>Bubble sort</td><td>Repeatedly compares adjacent items and swaps those in the wrong order until no further swaps are needed.</td><td>Simple to understand and implement.</td><td>Often many comparisons/swaps; generally unsuitable for large collections.</td></tr>
+<tr><td>Insertion sort</td><td>Builds a sorted section by taking each new item and inserting it into its correct position.</td><td>Can work well for small or nearly sorted collections.</td><td>Can require many movements/comparisons for large, disordered data.</td></tr>
+<tr><td>Merge sort</td><td>Divides data into smaller groups, sorts them and merges them into ordered results.</td><td>Predictable performance for larger collections.</td><td>Requires additional memory during merging and is more complex.</td></tr>
+</tbody></table>
+<h3>Comparison metrics and cases <span class="spec">2.11.4–2.11.5</span></h3>
+<ul><li><strong>Memory space:</strong> additional storage required.</li><li><strong>Execution time:</strong> time taken to complete.</li><li><strong>Number of comparisons:</strong> how often values are compared.</li><li><strong>Best case:</strong> most favourable arrangement/input.</li><li><strong>Worst case:</strong> least favourable arrangement/input.</li><li><strong>Average case:</strong> expected behaviour across typical arrangements/inputs.</li></ul>
+<div class="box exam"><span class="box-title">Suitability judgement</span>Use the dataset's size/order, frequency of use, memory limits, execution needs and number of comparisons. Big O notation is not required.</div>
 </section>
 
-<section id="2-11">
-  <h2>2.11 Common algorithms</h2>
-  <h3>Searching algorithms</h3>
-  <table>
-    <thead><tr><th>Algorithm</th><th>How it works</th><th>When used</th><th>Benefits</th><th>Drawbacks</th></tr></thead>
-    <tbody>
-      <tr><td>Linear search</td><td>Check items one-by-one</td><td>Unsorted/small lists</td><td>Simple; no precondition</td><td>Slow for large lists</td></tr>
-      <tr><td>Binary search</td><td>Halve a <em>sorted</em> list repeatedly</td><td>Large, sorted lists</td><td>Fast (fewer checks)</td><td>Needs sorted data</td></tr>
-    </tbody>
-  </table>
-  <h3>Sorting algorithms</h3>
-  <table>
-    <thead><tr><th>Algorithm</th><th>How it works</th><th>When used</th><th>Benefits</th><th>Drawbacks</th></tr></thead>
-    <tbody>
-      <tr><td>Bubble</td><td>Swap adjacent out-of-order items</td><td>Tiny lists; teaching</td><td>Very simple</td><td>Slow on big lists</td></tr>
-      <tr><td>Insertion</td><td>Insert each item into sorted portion</td><td>Small/nearly sorted data</td><td>Efficient for nearly sorted</td><td>Worse on random large data</td></tr>
-      <tr><td>Merge</td><td>Divide & conquer; merge sorted halves</td><td>Large data, stable sort</td><td>Predictably fast</td><td>Extra memory use</td></tr>
-    </tbody>
-  </table>
-  <h3>Metrics & cases</h3>
-  <ul class="list-tight">
-    <li>Compare by: memory space, execution time, number of comparisons.</li>
-    <li>Reason about best, worst, average case (no Big O required).</li>
-  </ul>
-  <div class="pitfall"><strong>Binary search requirement:</strong> Data must be sorted first; otherwise behaviour is undefined.</div>
-  <p class="small"><strong>Exam tip:</strong> For an <em>evaluate</em> question, match algorithm to data size/order and justify trade-offs.</p>
+<section id="2-12"><h2>2.12 Testing</h2>
+<h3>Testing components <span class="spec">2.12.1.1</span></h3><p>Test software, hardware, data, interfaces and the resulting service individually before combining them. This helps locate component-level faults before integration makes diagnosis harder.</p>
+<h3>Testing methods <span class="spec">2.12.2.1–2.12.2.2</span></h3>
+<table><thead><tr><th>Method</th><th>Purpose/when used</th><th>Benefit</th><th>Drawback</th></tr></thead><tbody>
+<tr><td>Concept</td><td>Checks whether an idea is feasible before full development.</td><td>Early feedback with limited investment.</td><td>Does not fully represent a completed solution.</td></tr>
+<tr><td>Unit</td><td>Tests an individual unit/module.</td><td>Helps isolate local errors.</td><td>Does not show whether units integrate.</td></tr>
+<tr><td>Boundary</td><td>Tests values at and around limits.</td><td>Finds mistakes in limits and comparisons.</td><td>Does not cover all behaviours.</td></tr>
+<tr><td>Integration</td><td>Tests combined components/interfaces.</td><td>Finds communication/interface faults.</td><td>Fault source can be harder to isolate.</td></tr>
+<tr><td>Performance</td><td>Checks speed and resource behaviour.</td><td>Shows whether performance requirements are met.</td><td>Results can depend on test environment.</td></tr>
+<tr><td>System</td><td>Tests the complete integrated solution.</td><td>Checks end-to-end behaviour.</td><td>Can be time-consuming.</td></tr>
+<tr><td>Acceptance</td><td>Checks whether requirements/user needs are met.</td><td>Links testing to intended use.</td><td>Late findings may be expensive to correct.</td></tr>
+<tr><td>Usability</td><td>Checks how effectively users interact with the solution.</td><td>Reveals practical user-experience issues.</td><td>Feedback can vary between users.</td></tr>
+<tr><td>Regression</td><td>Repeats relevant tests after changes.</td><td>Checks existing functionality still works.</td><td>Repeated suites require time/resources.</td></tr>
+<tr><td>Load/stress</td><td>Checks behaviour under expected or extreme demand.</td><td>Reveals capacity and failure points.</td><td>Requires suitable test resources/environment.</td></tr>
+<tr><td>Closed box</td><td>Tests inputs/outputs without using knowledge of internal code.</td><td>Focuses on requirements and user-visible behaviour.</td><td>May not reveal untested internal paths.</td></tr>
+<tr><td>Open box</td><td>Tests with knowledge of code/logic and internal paths.</td><td>Supports targeted coverage of logic.</td><td>Requires internal knowledge/access.</td></tr>
+</tbody></table>
+<h3>Automation <span class="spec">2.12.3.1</span></h3><p>Macros, scripts and functional testing tools automate repeated tests. Automation is useful for consistent repetition, but tests still need suitable design and maintenance.</p>
+<h3>Test data <span class="spec">2.12.4.1–2.12.4.2</span></h3>
+<table><thead><tr><th>Type</th><th>Meaning</th><th>Example for allowed score 0–100</th></tr></thead><tbody><tr><td>Valid</td><td>Accepted data within requirements.</td><td><code>60</code></td></tr><tr><td>Invalid</td><td>Data outside requirements.</td><td><code>101</code></td></tr><tr><td>Boundary</td><td>Data at or close to limits.</td><td><code>-1, 0, 1, 99, 100, 101</code></td></tr><tr><td>Erroneous</td><td>Data of the wrong type/form that cannot be processed as intended.</td><td><code>"sixty"</code></td></tr></tbody></table>
+<h3>Test plan <span class="spec">2.12.4.3</span></h3>
+<table><thead><tr><th>Test</th><th>Purpose</th><th>Test data</th><th>Expected result</th><th>Actual result</th></tr></thead><tbody><tr><td>Score lower boundary</td><td>Check minimum valid score is accepted.</td><td>0</td><td>Score accepted.</td><td>Record after test.</td></tr></tbody></table>
 </section>
 
-<section id="2-12">
-  <h2>2.12 Testing</h2>
-  <h3>Testing components (why)</h3>
-  <p>Test individual parts (software, hardware, data, interfaces, service) before integration to find faults early.</p>
-  <h3>Testing methods: purpose, benefits, drawbacks, when used</h3>
-  <table>
-    <thead><tr><th>Method</th><th>Purpose/when</th><th>Benefits</th><th>Drawbacks</th></tr></thead>
-    <tbody>
-      <tr><td>Concept</td><td>Early feasibility check</td><td>Quick feedback</td><td>Not exhaustive</td></tr>
-      <tr><td>Unit</td><td>Test single module</td><td>Isolates local bugs</td><td>Misses integration issues</td></tr>
-      <tr><td>Boundary</td><td>Edge values of valid ranges</td><td>Finds off-by-one errors</td><td>Limited scope</td></tr>
-      <tr><td>Integration</td><td>Modules together</td><td>Finds interface defects</td><td>Complex setup</td></tr>
-      <tr><td>Performance</td><td>Speed/resource checks</td><td>Capacity insight</td><td>Environment-sensitive</td></tr>
-      <tr><td>System</td><td>Whole solution</td><td>End-to-end coverage</td><td>Time consuming</td></tr>
-      <tr><td>Acceptance</td><td>Meets user needs</td><td>Realistic validation</td><td>May be subjective</td></tr>
-      <tr><td>Usability</td><td>User experience</td><td>Improves UX</td><td>Qualitative data</td></tr>
-      <tr><td>Regression</td><td>After changes</td><td>Prevents reintroduced bugs</td><td>Suite grows over time</td></tr>
-      <tr><td>Load/Stress</td><td>High demand/abuse</td><td>Reliability under pressure</td><td>Risk to env.</td></tr>
-      <tr><td>Closed box</td><td>Black-box, spec-based</td><td>No code needed</td><td>Misses internal faults</td></tr>
-      <tr><td>Open box</td><td>White-box, code-aware</td><td>Path coverage</td><td>Needs code access</td></tr>
-    </tbody>
-  </table>
-  <h3>Automation</h3>
-  <p>Use macros, scripts, and functional testing tools to repeat tests efficiently.</p>
-  <h3>Test data & plan</h3>
-  <ul class="list-tight">
-    <li><strong>Data types:</strong> valid, invalid, boundary, erroneous.</li>
-    <li><strong>Plan steps:</strong> identify test → purpose → test data → expected result → record actual.</li>
-  </ul>
-<pre><code># Minimal test plan (tabular in docs)
-# Test ID | Purpose | Input | Expected | Actual | Pass/Fail
-# T-01    | Range   | age=-1| Error msg| ...    | ...</code></pre>
-  <div class="pitfall"><strong>Only testing happy paths:</strong> Include invalid and boundary cases.</div>
-  <p class="small"><strong>Exam tip:</strong> In LAQs, justify why chosen methods/data fit the scenario and risks.</p>
+<section id="agent"><h2>Question-Generation Guidance</h2>
+<div class="box agent"><span class="box-title">Strict scope</span>Generate questions only from 2.1.1–2.12.4.3 and supported Appendix 2 Core commands. Do not introduce advanced Python as assumed examinable content.</div>
+<ul><li>Map each question to a specification reference and AO.</li><li>Use recall sparingly; prioritise interpretation, development, debugging, application and judgement where the specification says “be able to”, “determine” or “make judgements”.</li><li>For code-output questions, verify one unambiguous answer.</li><li>For debugging, include only intended faults and define expected behaviour.</li><li>For suitability/evaluation, require scenario application and a supported judgement.</li><li>For MCQs, use one clear answer and plausible distractors.</li><li>Do not reveal answers before the student attempts the question.</li></ul>
+<h3>Common misconceptions to detect</h3>
+<ul><li>All digit-containing values should be integers.</li><li>A constant cannot technically be reassigned in Python.</li><li>Global variables are always preferable because all functions can see them.</li><li>Validation proves data is correct.</li><li>A function and procedure both return a result.</li><li>A <code>while</code> loop always runs a known number of times.</li><li>Binary search works correctly on unsorted data.</li><li>The fastest algorithm is automatically most suitable.</li><li>Testing only valid data is sufficient.</li><li>Acceptance and system testing have identical purposes.</li></ul>
 </section>
 
-<section id="appendix">
-  <h2>Appendix – Glossary & quick syntax</h2>
-  <div class="grid two">
-    <div>
-      <h3>Glossary (selected)</h3>
-      <ul class="list-tight small">
-        <li><strong>Variable:</strong> changeable named value in memory.</li>
-        <li><strong>Constant:</strong> named value that should not change.</li>
-        <li><strong>Scope:</strong> where a name is visible (local/global).</li>
-        <li><strong>Validation:</strong> checks data is reasonable.</li>
-        <li><strong>Verification:</strong> checks data is correct.</li>
-        <li><strong>Algorithm:</strong> step-by-step method to solve a problem.</li>
-        <li><strong>Iteration:</strong> repetition via loops.</li>
-        <li><strong>Selection:</strong> branching via conditions.</li>
-        <li><strong>Array/List:</strong> ordered collections; arrays are typed/fixed-size.</li>
-        <li><strong>Dictionary:</strong> key–value mapping.</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Quick syntax (Python 3.10+)</h3>
-<pre><code># match/case (selection)
-match status:
-    case "paid":
-        handle_paid()
-    case "due":
-        handle_due()
-    case _:
-        handle_other()
-
-# with files
-with open("file.txt","r",encoding="utf-8") as f:
-    data = f.read()
-
-# typing hints
-def add(a: int, b: int) -> int:
-    return a + b
-</code></pre>
-    </div>
-  </div>
+<section id="glossary"><h2>Glossary</h2>
+<table><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody>
+<tr><td>Variable</td><td>Named storage whose value can change.</td></tr><tr><td>Constant</td><td>Named value intended not to change.</td></tr><tr><td>Scope</td><td>Where a name/value can be accessed.</td></tr><tr><td>Data structure</td><td>A method of organising related data.</td></tr><tr><td>Operator</td><td>A symbol/keyword used to perform an operation.</td></tr><tr><td>Sequence</td><td>Instructions performed in order.</td></tr><tr><td>Selection</td><td>Choosing a path according to a condition.</td></tr><tr><td>Iteration</td><td>Repeating instructions.</td></tr><tr><td>Function</td><td>A named section of code that must return a result.</td></tr><tr><td>Procedure</td><td>A named section of code that must not return a result.</td></tr><tr><td>Validation</td><td>Checking input complies with defined rules.</td></tr><tr><td>Robust code</td><td>Code designed to handle unexpected inputs/terminations and provide meaningful errors.</td></tr><tr><td>Debugging</td><td>Locating and correcting errors.</td></tr><tr><td>Regression testing</td><td>Repeating tests after a change to check existing behaviour.</td></tr>
+</tbody></table>
 </section>
-
-<footer>
-  <p>© 2025 T Level DSD Core Content Area 2. Black-and-white knowledge base for revision and agent use.</p>
-</footer>
-
-</main>
-</body>
-</html>
+<footer><hr><p class="small"><strong>Boundary:</strong> Core Paper 1, Content Area 2 only. Check against the current approved specification before formal assessment use.</p></footer>
+</body></html>
